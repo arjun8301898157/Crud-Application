@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Manage Items</h3>
+                </div>
+                <div class="card-body">
+                    <form id="itemForm">
+                        <div class="form-group">
+                            <label for="itemName">Item Name</label>
+                            <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemDescription">Description</label>
+                            <textarea class="form-control" id="itemDescription" rows="3" placeholder="Enter description"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Item</button>
+                    </form>
+                    <hr>
+                    <ul class="list-group" id="itemList">
+                        <!-- List items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('itemForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const itemName = document.getElementById('itemName').value;
+        const itemDescription = document.getElementById('itemDescription').value;
+
+        if (itemName && itemDescription) {
+            const itemList = document.getElementById('itemList');
+            const itemElement = document.createElement('li');
+            itemElement.className = 'list-group-item d-flex justify-content-between align-items-center';
+            itemElement.innerHTML = `
+                <div>
+                    <h5>${itemName}</h5>
+                    <p>${itemDescription}</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary btn-sm edit-item">Edit</button>
+                    <button class="btn btn-danger btn-sm delete-item">Delete</button>
+                </div>
+            `;
+            itemList.appendChild(itemElement);
+
+            // Clear form inputs
+            document.getElementById('itemName').value = '';
+            document.getElementById('itemDescription').value = '';
+        }
+    });
+
+    document.getElementById('itemList').addEventListener('click', function (e) {
+        if (e.target.classList.contains('delete-item')) {
+            e.target.parentElement.parentElement.remove();
+        } else if (e.target.classList.contains('edit-item')) {
+            const itemElement = e.target.parentElement.parentElement;
+            const itemName = itemElement.querySelector('h5').innerText;
+            const itemDescription = itemElement.querySelector('p').innerText;
+
+            document.getElementById('itemName').value = itemName;
+            document.getElementById('itemDescription').value = itemDescription;
+
+            itemElement.remove();
+        }
+    });
+</script>
