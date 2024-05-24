@@ -1,6 +1,52 @@
-@{
-    ViewData["Title"] = "Delete";
+<div class="container">
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<form method="post" action="/Person/Delete" class="delete-form">
+    <label for="id">Person ID:</label>  
+    <input type="number" name="id" placeholder="Enter Person ID">
+    <button type="submit" class="delete-button">Delete Person</button>
+</form></div>
+<style>
+    .container{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .delete-form {
+    
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Delete</p>
+.delete-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.delete-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.delete-button {
+    background-color: #ff6347; /* Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #ff5733; /* Darker red */
+}
+</style>
