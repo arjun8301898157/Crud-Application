@@ -1,0 +1,17 @@
+
+# Simple .NET CRUD Application
+
+This is a simple .NET CRUD (Create, Read, Update, Delete) application. It requires .NET and MySQL.
+
+## Prerequisites
+
+- .NET SDK
+- MySQL server
+
+## Getting Started
+
+1. **Clone the repository**
+
+2. Change the db information from the program.cs
+
+3. Run the Dotnet application using dotnet run 
